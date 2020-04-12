@@ -1,0 +1,25 @@
+  .btn {
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background-color: #5a6268;
+    color: #fff;
+  }
+
+  .btn-success {
+    background-color: #1e7e34;
+    color: #fff;
+  }
+
+  .disabled{
+      opacity: 0.5;
+      cursor: auto !important;
+  }

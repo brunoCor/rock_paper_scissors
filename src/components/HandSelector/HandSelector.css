@@ -1,0 +1,8 @@
+.active {
+    cursor: pointer;
+    /* @todo : agrandir quand passe le cursor dessus */
+}
+
+.inactive {
+    opacity: 0.5;
+}
