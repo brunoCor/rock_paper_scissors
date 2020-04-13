@@ -1,11 +1,11 @@
 import React from "react";
 import Board from "./Board";
-import { mount } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
 import AbstractConstants from "../../classes/AbstractConstants";
 import AbstractData from "../../classes/AbstractData";
 import HandSelector from "../HandSelector/HandSelector";
 
-let wrapped;
+let wrapped: ReactWrapper<any, any, any>;
 
 beforeEach(() => {
   wrapped = mount(
@@ -16,6 +16,10 @@ beforeEach(() => {
       playerName={"playerName"}
     />
   );
+});
+
+afterEach(() => {
+  wrapped.unmount();
 });
 
 it("shows the handSelector", () => {
@@ -170,25 +174,25 @@ it("shall manage the end of the round", () => {
   expect(spyRoundEndingSettings).toHaveBeenCalled();
 });
 
-it('shall play the game automaticly', () => {
-    const instance = wrapped.instance();
-    const spyGenerateRandomHand = jest.spyOn(instance, "generateRandomHand");
-    const spyHandleUserChoice = jest.spyOn(instance, "handleUserChoice");
+it("shall play the game automaticly", () => {
+  const instance = wrapped.instance();
+  const spyGenerateRandomHand = jest.spyOn(instance, "generateRandomHand");
+  const spyHandleUserChoice = jest.spyOn(instance, "handleUserChoice");
 
-    instance.playAuto();
+  instance.playAuto();
 
-    expect(spyGenerateRandomHand).toHaveBeenCalled();
-    expect(spyHandleUserChoice).toHaveBeenCalled();
-}) 
+  expect(spyGenerateRandomHand).toHaveBeenCalled();
+  expect(spyHandleUserChoice).toHaveBeenCalled();
+});
 
-it('shall handleUserChoice ', () => {
-    const hands = AbstractData.getHands();
-    const instance = wrapped.instance();
-    const spyGenerateRandomHand = jest.spyOn(instance, "generateRandomHand");
-    const spyRoundResults = jest.spyOn(instance, "roundResults");
+it("shall handleUserChoice ", () => {
+  const hands = AbstractData.getHands();
+  const instance = wrapped.instance();
+  const spyGenerateRandomHand = jest.spyOn(instance, "generateRandomHand");
+  const spyRoundResults = jest.spyOn(instance, "roundResults");
 
-    instance.handleUserChoice(hands[0]);
+  instance.handleUserChoice(hands[0]);
 
-    expect(spyGenerateRandomHand).toHaveBeenCalled();
-    expect(spyRoundResults).toHaveBeenCalled();
+  expect(spyGenerateRandomHand).toHaveBeenCalled();
+  expect(spyRoundResults).toHaveBeenCalled();
 });

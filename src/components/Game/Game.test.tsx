@@ -1,14 +1,18 @@
 import React from "react";
 import Game from "./Game";
-import { mount } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
 import Board from "../Board/Board";
 import Home from "../Home/Home";
 import AbstractConstants from "../../classes/AbstractConstants";
 
-let wrapped;
+let wrapped: ReactWrapper<any, any>;
 
 beforeEach(() => {
   wrapped = mount(<Game />);
+});
+
+afterEach(() => {
+  wrapped.unmount();
 });
 
 it("has a Home box by default and a Board Box when the form is submit", () => {

@@ -160,18 +160,16 @@ class Board extends React.Component<IProps, IState> {
    * @param winnerPlayerName: string|null
    */
   roundEndingSettings(winnerPlayerName: string | null) {
-    
-      this.setState({
-        message: null,
-        flipped: false,
-      });
+    this.setState({
+      message: null,
+      flipped: false,
+    });
 
-      if (this.isGameOver() && winnerPlayerName) {
-        this.setState({ gameResult: `${winnerPlayerName} win this game` });
-      } else {
-        this.setState({ currentRound: this.state.currentRound + 1 });
-      }
-    
+    if (this.isGameOver() && winnerPlayerName) {
+      this.setState({ gameResult: `${winnerPlayerName} win this game` });
+    } else {
+      this.setState({ currentRound: this.state.currentRound + 1 });
+    }
   }
 
   /**
@@ -192,8 +190,8 @@ class Board extends React.Component<IProps, IState> {
         },
         () => {
           setTimeout(() => {
-          this.roundEndingSettings(winnerPlayerName);
-        }, 2000);
+            this.roundEndingSettings(winnerPlayerName);
+          }, 2000);
         }
       );
     }, 1500);
